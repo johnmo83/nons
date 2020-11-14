@@ -9,9 +9,9 @@
 #SBATCH --output=PAML.%j.out
 #SBATCH --error=PAML.%j.err
 
-NAME1=$(find . -maxdepth 1 -name "DR-026_S19_L001_R1_001.fastq.gz" | xargs -I {} basename {} .fastq.gz)
+NAME1=$(find . -maxdepth 1 -name "DR-031_S24_L001_R1_001.fastq.gz" | xargs -I {} basename {} .fastq.gz)
 
-NAME2=$(find . -maxdepth 1 -name "DR-026_S19_L001_R2_001.fastq.gz" | xargs -I {} basename {} .fastq.gz)
+NAME2=$(find . -maxdepth 1 -name "DR-031_S24_L001_R2_001.fastq.gz" | xargs -I {} basename {} .fastq.gz)
 
 NAME3=$(echo *.fastq.gz | awk -v FS='_' '{print $1}')
 
