@@ -125,7 +125,7 @@ time  java -jar $EBROOTGATK/GenomeAnalysisTK.jar \
 -I "$NAME"_bwa_sorted_Added.bam \
 -o target_intervals.list
 
-module load LoFreq/2.1.3-foss-2019b-Python-2.7.14
+module load LoFreq/2.1.3.1-foss-2019b-Python-2.7.16
 #Source http://csb5.github.io/lofreq/commands/#call
 
 time lofreq call -f "$NAME2"_curated_varpatch.fa \
@@ -184,19 +184,6 @@ grep "^#" -v "$NAME"_LoFreq-AF.vcf | awk 'BEGIN{OFS"\t"} {split($1, a, "|"); pri
 
 samtools depth "$NAME"_bwa_sorted_realigned.bam | awk 'BEGIN{OFS"\t"} {split($1, a, "|"); print a[1], "\t",$2, "\t", $3}' > "$NAME"_coverage.tsv
 
-##Organize results
 
-mkdir 01_Reference
-mv WF10_* ./01_Reference
-mkdir 02_Alignments
-mv *.bam ./02_Alignments
-mv *.bai ./02_Alignments
-mv *.sam ./02_Alignments
-mv recal_data.table ./02_Alignments
-mv target_intervals.list ./02_Alignments
-mkdir 04_Results
-mv *_cutadapt_LoFreq-nuclAF.vcf ./04_Results
-mv *_cutadapt_coverage.tsv ./04_Results
-mkdir 03_VCF
-mv *.vcf ./03_VCF
+
 
