@@ -184,6 +184,17 @@ grep "^#" -v "$NAME"_LoFreq-AF.vcf | awk 'BEGIN{OFS"\t"} {split($1, a, "|"); pri
 
 samtools depth "$NAME"_bwa_sorted_realigned.bam | awk 'BEGIN{OFS"\t"} {split($1, a, "|"); print a[1], "\t",$2, "\t", $3}' > "$NAME"_coverage.tsv
 
+##Organize results
 
+mkdir 01_Reference
+mv WF10_* ./01_Reference
+mkdir 02_Alignments
+mv *.bam ./02_Alignments
+mv *.bai ./02_Alignments
+mv *.sam ./02_Alignments
+mv recal_data.table ./02_Alignments
+mv target_intervals.list ./02_Alignments
+mkdir 04_Results
+mv *_cutadapt_LoFreq-nuclAF.vcf ./04_Results
 
 
