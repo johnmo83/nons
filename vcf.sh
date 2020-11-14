@@ -71,24 +71,24 @@ module load picard/2.16.0-Java-1.8.0_144
 
 echo `module list`
 
-time java -Xmx20g -classpath "/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar" -jar \
-/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar \
+time java -Xmx20g -classpath "/home/jm45001/scratch/apps/picard/picard.jar" -jar \
+/home/jm45001/scratch/apps/picardi/picard.jar \
 SortSam I="$NAME".bam \
 O="$NAME"_bwa_sorted.bam SORT_ORDER=coordinate
 
 samtools index "$NAME"_bwa_sorted.bam
 
-time java -Xmx20g -classpath "/usr
-/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar" -jar \
-/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar \
+time java -Xmx20g -classpath "/home/jm45001/scratch/apps/picard
+/picard.jar" -jar \
+/home/jm45001/scratch/apps/picard/picard.jar \
 AddOrReplaceReadGroups \
 I="$NAME"_bwa_sorted.bam \
 O="$NAME"_bwa_sorted_Added.bam RGLB=Libreria RGPL=illumina RGPU=unit1 RGSM=20\
 
 samtools index "$NAME"_bwa_sorted_Added.bam
 
-time java -Xmx20g -classpath "/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar" -jar \
-/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar \
+time java -Xmx20g -classpath "/home/jm45001/scratch/apps/picard/picard.jar" -jar \
+/home/jm45001/scratch/apps/picard/picard.jar \
 ValidateSamFile \
 I="$NAME"_bwa_sorted_Added.bam \
 MODE=SUMMARY 1>job.out 2>job.err
@@ -111,8 +111,8 @@ echo "name of the file is : $NAME"
 
 samtools faidx "$NAME2"_curated_varpatch.fa
 
-time java -Xmx20g -classpath "/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar" -jar \
-/usr/local/apps/eb/picard/2.16.0-Java-1.8.0_144/picard.jar \
+time java -Xmx20g -classpath "/home/jm45001/scratch/apps/picard/picard.jar" -jar \
+/home/jm45001/scratch/apps/picard/picard.jar \
 CreateSequenceDictionary \
 REFERENCE="$NAME2"_curated_varpatch.fa \
 OUTPUT="$NAME2"_curated_varpatch.dict
